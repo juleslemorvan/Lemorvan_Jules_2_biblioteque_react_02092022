@@ -5,7 +5,13 @@ import { States } from "../data/State";
 import { Departments } from "../data/Departments";
 
 const Form = () => {
+  const [firstName, setFirstName] = useState("");
+  const [lastName, setLastName] = useState("");
+  const [birthDate, setbirthDate] = useState(new Date());
   const [startDate, setStartDate] = useState(new Date());
+  const [street, setStreet] = useState("");
+  const [city, setCity] = useState("");
+  const [zip, setZip] = useState(0);
 
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8 ">
@@ -13,9 +19,13 @@ const Form = () => {
         <h1 className="text-2xl font-bold sm:text-3xl">Create Employee</h1>
       </div>
 
-      <form action="" className="max-w-md mx-auto mt-8 mb-0 space-y-4 ">
+      <form
+        className="max-w-md mx-auto mt-8 mb-0 space-y-4 "
+        action=""
+        // onSubmit={handleSubmit}
+      >
         <div>
-          <label for="firstName" className="sr-only">
+          <label htmlFor="firstName" className="sr-only">
             firstName
           </label>
 
@@ -24,12 +34,14 @@ const Form = () => {
               type="text"
               className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
               placeholder="First Name"
+              value={firstName}
+              onChange={(e) => setFirstName(e.target.value)}
             />
           </div>
         </div>
 
         <div>
-          <label for="LastName" className="sr-only">
+          <label htmlFor="LastName" className="sr-only">
             LastName
           </label>
           <div className="relative">
@@ -37,6 +49,8 @@ const Form = () => {
               type="text"
               className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
               placeholder="Last Name"
+              value={lastName}
+              onChange={(e) => setLastName(e.target.value)}
             />
           </div>
         </div>
@@ -44,8 +58,9 @@ const Form = () => {
           <p className="flex justify-center ">Date of Birth</p>
           <DatePicker
             selected={startDate}
-            onChange={(date) => setStartDate(date)}
+            onChange={(date) => setbirthDate(date)}
             className="w-full"
+            value={birthDate}
           />
         </div>
         <div className="flex flex-col justify-center items-center">
@@ -54,6 +69,7 @@ const Form = () => {
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             className="w-full"
+            value={startDate}
           />
         </div>
 
@@ -62,12 +78,14 @@ const Form = () => {
             Address
           </h2>
           <div className="pt-4 pb-4">
-            <label for="Street" className="sr-only">
+            <label htmlFor="Street" className="sr-only">
               Street
             </label>
 
             <div className="relative">
               <input
+                value={street}
+                onChange={(e) => setStreet(e.target.value)}
                 type="text"
                 className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                 placeholder="Street"
@@ -76,12 +94,14 @@ const Form = () => {
           </div>
 
           <div>
-            <label for="City" className="sr-only">
+            <label htmlFor="City" className="sr-only">
               City
             </label>
 
             <div className="relative">
               <input
+                value={city}
+                onChange={(e) => setCity(e.target.value)}
                 type="text"
                 className="w-full p-4 pr-12 text-sm border-gray-200 rounded-lg shadow-sm"
                 placeholder="City"
@@ -90,7 +110,7 @@ const Form = () => {
           </div>
 
           <div className="pt-4 pb-4">
-            <label for="States" className="flex justify-center">
+            <label htmlFor="States" className="flex justify-center">
               States
             </label>
             <select
@@ -109,14 +129,24 @@ const Form = () => {
         </div>
 
         <div className="flex flex-col justify-center  items-center">
-          <label for="zip" className=" flex justify-center ">
+          <label htmlFor="zip" className=" flex justify-center ">
             Zip Code
           </label>
-          <input type="number" id="zip" name="zip" min="-100" max="100"></input>
+          <input
+            type="number"
+            id="zip"
+            name="zip"
+            min="-100"
+            max="100"
+            value={zip}
+            onChange={(e) => setZip(e.target.value)}
+          >
+            0
+          </input>
         </div>
 
         <div className="pt-4 pb-4">
-          <label for="Department" className="flex justify-center">
+          <label htmlFor="Department" className="flex justify-center">
             Department
           </label>
           <select
