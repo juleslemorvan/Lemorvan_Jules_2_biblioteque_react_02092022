@@ -11,7 +11,12 @@ const Form = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
+  const [state, setState] = useState("");
   const [zip, setZip] = useState(0);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+  };
 
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8 ">
@@ -22,7 +27,7 @@ const Form = () => {
       <form
         className="max-w-md mx-auto mt-8 mb-0 space-y-4 "
         action=""
-        // onSubmit={handleSubmit}
+        onSubmit={handleSubmit}
       >
         <div>
           <label htmlFor="firstName" className="sr-only">
@@ -114,6 +119,8 @@ const Form = () => {
               States
             </label>
             <select
+              value={state}
+              onChange={(e) => setState(e.target.value)}
               id="States"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
@@ -140,9 +147,7 @@ const Form = () => {
             max="100"
             value={zip}
             onChange={(e) => setZip(e.target.value)}
-          >
-            0
-          </input>
+          />
         </div>
 
         <div className="pt-4 pb-4">
