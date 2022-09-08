@@ -13,7 +13,7 @@ const Form = () => {
   const [startDate, setStartDate] = useState(new Date());
   const [street, setStreet] = useState("");
   const [city, setCity] = useState("");
-  const [state, setState] = useState("");
+  const [etat, setEtat] = useState("");
   const [zip, setZip] = useState(0);
   const [department, setDepartment] = useState("");
 
@@ -29,11 +29,11 @@ const Form = () => {
       départ: startDate,
       rue: street,
       ville: city,
-      etat: state,
+      etat: etat,
       zip: zip,
       departement: department,
     };
-
+    console.log(newUser);
     dispatch(addEmployee(newUser));
   };
 
@@ -81,9 +81,10 @@ const Form = () => {
         <div className="flex flex-col justify-center items-center">
           <p className="flex justify-center ">Date of Birth</p>
           <DatePicker
-            selected={startDate}
+            selected={birthDate}
             onChange={(date) => setbirthDate(date)}
             className="w-full"
+            format={"MM/dd/y"}
             value={birthDate}
           />
         </div>
@@ -93,6 +94,7 @@ const Form = () => {
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             className="w-full"
+            format={"MM/dd/y"}
             value={startDate}
           />
         </div>
@@ -134,13 +136,13 @@ const Form = () => {
           </div>
 
           <div className="pt-4 pb-4">
-            <label htmlFor="States" className="flex justify-center">
+            <label htmlFor="etat" className="flex justify-center">
               States
             </label>
             <select
-              value={state}
-              onChange={(e) => setState(e.target.value)}
-              id="States"
+              value={etat}
+              onChange={(e) => setEtat(e.target.value)}
+              id="etat"
               className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
             >
               {States.map((state) => {
