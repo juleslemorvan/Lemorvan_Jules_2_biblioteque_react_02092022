@@ -3,18 +3,11 @@ import { createSlice } from "@reduxjs/toolkit";
 export const employeesSlice = createSlice({
   name: "employees",
   initialState: {
-    employees: [
-      { name: "jules", prenom: "lemorvan", age: 29 },
-      { name: "albert", prenom: "legros", age: 25 },
-    ],
+    employees: [],
   },
   reducers: {
     addEmployee: (state, action) => {
-      const newEmployee = {
-        id: new Date(),
-        name: action.payload,
-      };
-      state.push(newEmployee);
+      return [...state, action.payload];
     },
   },
 });

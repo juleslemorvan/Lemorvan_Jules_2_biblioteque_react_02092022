@@ -23,20 +23,20 @@ const Form = () => {
   const handleSubmit = (e) => {
     e.preventDefault();
     let newUser = {
-      prénom: { firstName },
-      nom: { lastName },
-      birth: { birthDate },
-      départ: { startDate },
-      rue: { street },
-      ville: { city },
-      etat: { state },
-      zip: { zip },
-      departement: { department },
+      prénom: firstName,
+      nom: lastName,
+      birth: birthDate,
+      départ: startDate,
+      rue: street,
+      ville: city,
+      etat: state,
+      zip: zip,
+      departement: department,
     };
 
     dispatch(addEmployee(newUser));
   };
-  console.log(employees);
+
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8 ">
       <div className="max-w-lg mx-auto text-center">
