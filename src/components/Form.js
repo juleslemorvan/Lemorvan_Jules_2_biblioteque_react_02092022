@@ -3,6 +3,8 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { States } from "../data/State";
 import { Departments } from "../data/Departments";
+import { useSelector, useDispatch } from "react-redux";
+import { addEmployee } from "../feature/employeesSlice";
 
 const Form = () => {
   const [firstName, setFirstName] = useState("");
@@ -13,11 +15,28 @@ const Form = () => {
   const [city, setCity] = useState("");
   const [state, setState] = useState("");
   const [zip, setZip] = useState(0);
+  const [department, setDepartment] = useState("");
+
+  const employees = useSelector((state) => state.employees);
+  const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-  };
+    let newUser = {
+      prénom: { firstName },
+      nom: { lastName },
+      birth: { birthDate },
+      départ: { startDate },
+      rue: { street },
+      ville: { city },
+      etat: { state },
+      zip: { zip },
+      departement: { department },
+    };
 
+    dispatch(addEmployee(newUser));
+  };
+  console.log(employees);
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8 ">
       <div className="max-w-lg mx-auto text-center">
@@ -143,8 +162,8 @@ const Form = () => {
             type="number"
             id="zip"
             name="zip"
-            min="-100"
-            max="100"
+            min="-100000"
+            max="10000000"
             value={zip}
             onChange={(e) => setZip(e.target.value)}
           />
@@ -155,6 +174,8 @@ const Form = () => {
             Department
           </label>
           <select
+            value={department}
+            onChange={(e) => setDepartment(e.target.value)}
             id="Department"
             className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
           >
