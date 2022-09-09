@@ -3,8 +3,9 @@ import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
 import { States } from "../data/State";
 import { Departments } from "../data/Departments";
-import { useSelector, useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import { addEmployee } from "../feature/employeesSlice";
+import { nanoid } from "@reduxjs/toolkit";
 
 const Form = () => {
   const [firstName, setFirstName] = useState("");
@@ -17,12 +18,12 @@ const Form = () => {
   const [zip, setZip] = useState(0);
   const [department, setDepartment] = useState("");
 
-  const employees = useSelector((state) => state.employees);
   const dispatch = useDispatch();
 
   const handleSubmit = (e) => {
     e.preventDefault();
     let newUser = {
+      id: nanoid(),
       prénom: firstName,
       nom: lastName,
       birth: birthDate,
@@ -33,7 +34,7 @@ const Form = () => {
       zip: zip,
       departement: department,
     };
-    console.log(newUser);
+
     dispatch(addEmployee(newUser));
   };
 
