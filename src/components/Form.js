@@ -82,20 +82,20 @@ const Form = () => {
         <div className="flex flex-col justify-center items-center">
           <p className="flex justify-center ">Date of Birth</p>
           <DatePicker
+            dateFormat="dd/MM/yy"
             selected={birthDate}
             onChange={(date) => setbirthDate(date)}
             className="w-full"
-            format={"MM/dd/y"}
             value={birthDate}
           />
         </div>
         <div className="flex flex-col justify-center items-center">
           <p className="flex justify-center ">Start Date</p>
           <DatePicker
+            dateFormat="dd/MM/yy"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             className="w-full"
-            format={"MM/dd/y"}
             value={startDate}
           />
         </div>
