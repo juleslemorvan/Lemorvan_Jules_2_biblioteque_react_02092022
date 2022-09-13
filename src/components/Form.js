@@ -36,6 +36,7 @@ const Form = () => {
     };
 
     dispatch(addEmployee(newUser));
+    localStorage.setItem("Employees", JSON.stringify(newUser));
   };
 
   return (
@@ -82,7 +83,7 @@ const Form = () => {
         <div className="flex flex-col justify-center items-center">
           <p className="flex justify-center ">Date of Birth</p>
           <DatePicker
-            dateFormat="dd/MM/yy"
+            // dateFormat="dd/MM/yy"
             selected={birthDate}
             onChange={(date) => setbirthDate(date)}
             className="w-full"
@@ -92,7 +93,7 @@ const Form = () => {
         <div className="flex flex-col justify-center items-center">
           <p className="flex justify-center ">Start Date</p>
           <DatePicker
-            dateFormat="dd/MM/yy"
+            // dateFormat="dd/MM/yy"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             className="w-full"
