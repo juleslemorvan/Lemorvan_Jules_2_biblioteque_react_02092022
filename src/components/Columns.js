@@ -1,35 +1,43 @@
-export const COLUMNS = [
+import { format, formatISO } from "date-fns";
+
+const Columns = [
   {
     Header: "id",
     accessor: "ID",
   },
   {
     Header: "First name",
-    accessor: "firstName",
+    accessor: "prénom",
   },
   {
     Header: "Last Name",
-    accessor: "LastName",
+    accessor: "nom",
   },
   {
-    Header: "Date of Birth",
-    accessor: "birth",
+    Header: "Start Date",
+    accessor: (row) => formatISO(new Date(row.birth)),
+    Cell: ({ value }) => {
+      return format(new Date(value), "dd/MM/yyyy");
+    },
   },
   {
     Header: "Date of Start",
-    accessor: "startDate",
+    accessor: (row) => formatISO(new Date(row.départ)),
+    Cell: ({ value }) => {
+      return format(new Date(value), "dd/MM/yyyy");
+    },
   },
   {
     Header: "Street",
-    accessor: "street",
+    accessor: "rue",
   },
   {
     Header: "City",
-    accessor: "city",
+    accessor: "ville",
   },
   {
     Header: "State",
-    accessor: "state",
+    accessor: "etat",
   },
   {
     Header: "Zipcode",
@@ -40,3 +48,5 @@ export const COLUMNS = [
     accessor: "departement",
   },
 ];
+
+export default Columns;

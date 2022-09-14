@@ -36,7 +36,6 @@ const Form = () => {
     };
 
     dispatch(addEmployee(newUser));
-    localStorage.setItem("Employees", JSON.stringify(newUser));
   };
 
   return (
