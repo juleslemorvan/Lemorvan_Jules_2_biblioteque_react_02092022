@@ -14,7 +14,7 @@ const Columns = [
     accessor: "nom",
   },
   {
-    Header: "Start Date",
+    Header: "BirthDay",
     accessor: (row) => formatISO(new Date(row.birth)),
     Cell: ({ value }) => {
       return format(new Date(value), "dd/MM/yyyy");

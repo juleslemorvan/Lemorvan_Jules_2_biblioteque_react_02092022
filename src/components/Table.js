@@ -17,14 +17,17 @@ const Table = () => {
 
   const { getTableProps, getTableBodyProps, headerGroups, rows, prepareRow } =
     tableInstance;
-  console.log(rows);
+
   return (
-    <table {...getTableProps()}>
-      <thead>
+    <table
+      className="border-collapse shadow-lg border-2 border-slate-300"
+      {...getTableProps()}
+    >
+      <thead className="bg-gray-900 text-white text-left">
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th className="text-lg" {...column.getHeaderProps()}>
+              <th className="text-lg p-4 border-2" {...column.getHeaderProps()}>
                 {column.render("Header")}
               </th>
             ))}
@@ -38,7 +41,7 @@ const Table = () => {
             <tr {...row.getRowProps()}>
               {row.cells.map((cell) => {
                 return (
-                  <td className="text-lg" {...cell.getCellProps()}>
+                  <td className="text-lg p-4 border-2" {...cell.getCellProps()}>
                     {cell.render("Cell")}
                   </td>
                 );

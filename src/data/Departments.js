@@ -1,5 +1,8 @@
 export const Departments = [
   {
+    name: "--Choose a department--",
+  },
+  {
     name: "Sales",
   },
   {

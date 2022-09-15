@@ -36,6 +36,13 @@ const Form = () => {
     };
 
     dispatch(addEmployee(newUser));
+    setFirstName("");
+    setLastName("");
+    setStreet("");
+    setCity("");
+    setEtat("");
+    setZip("");
+    setDepartment("");
   };
 
   return (
