@@ -1,5 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import Footer from "../components/Footer";
 import Form from "../components/Form";
 import Navbar from "../components/Navbar";
 
@@ -15,6 +16,7 @@ const Home = () => {
         </div>
       </div>
       <Form />
+      <Footer />
     </div>
   );
 };
