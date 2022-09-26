@@ -6,6 +6,7 @@ import { Departments } from "../data/Departments";
 import { useDispatch } from "react-redux";
 import { addEmployee } from "../feature/employeesSlice";
 import { nanoid } from "@reduxjs/toolkit";
+import Modale from "jules-modal";
 
 const Form = () => {
   const [firstName, setFirstName] = useState("");
@@ -17,6 +18,8 @@ const Form = () => {
   const [etat, setEtat] = useState("");
   const [zip, setZip] = useState(0);
   const [department, setDepartment] = useState("");
+
+  const [modal, setModal] = useState(false);
 
   const dispatch = useDispatch();
 
@@ -43,7 +46,11 @@ const Form = () => {
     setEtat("");
     setZip("");
     setDepartment("");
+
+    toggleModal();
   };
+
+  const toggleModal = () => setModal(!modal);
 
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8 ">
@@ -89,7 +96,6 @@ const Form = () => {
         <div className="flex flex-col justify-center items-center">
           <p className="flex justify-center ">Date of Birth</p>
           <DatePicker
-            // dateFormat="dd/MM/yy"
             selected={birthDate}
             onChange={(date) => setbirthDate(date)}
             className="w-full"
@@ -99,7 +105,6 @@ const Form = () => {
         <div className="flex flex-col justify-center items-center">
           <p className="flex justify-center ">Start Date</p>
           <DatePicker
-            // dateFormat="dd/MM/yy"
             selected={startDate}
             onChange={(date) => setStartDate(date)}
             className="w-full"
@@ -208,6 +213,7 @@ const Form = () => {
           </button>
         </div>
       </form>
+      <Modale open={modal} onClose={setModal(false)} />
     </div>
   );
 };

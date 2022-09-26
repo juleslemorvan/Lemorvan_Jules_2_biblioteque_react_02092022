@@ -81,7 +81,7 @@ const SortingTable = () => {
           {page.map((row) => {
             prepareRow(row);
             return (
-              <tr {...row.getRowProps()}>
+              <tr className="even:bg-gray-100" {...row.getRowProps()}>
                 {row.cells.map((cell) => {
                   return (
                     <td
