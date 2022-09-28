@@ -6,7 +6,7 @@ import { Departments } from "../data/Departments";
 import { useDispatch } from "react-redux";
 import { addEmployee } from "../feature/employeesSlice";
 import { nanoid } from "@reduxjs/toolkit";
-import Modale from "jules-modal";
+import { Modal } from "jules-modal";
 
 const Form = () => {
   const [firstName, setFirstName] = useState("");
@@ -22,6 +22,8 @@ const Form = () => {
   const [modal, setModal] = useState(false);
 
   const dispatch = useDispatch();
+
+  const toggleModal = () => setModal(!modal);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -49,8 +51,6 @@ const Form = () => {
 
     toggleModal();
   };
-
-  const toggleModal = () => setModal(!modal);
 
   return (
     <div className="px-4 py-16 mx-auto max-w-screen-xl sm:px-6 lg:px-8 ">
@@ -213,7 +213,7 @@ const Form = () => {
           </button>
         </div>
       </form>
-      <Modale open={modal} onClose={setModal(false)} />
+      <Modal open={modal} onClose={toggleModal} />
     </div>
   );
 };
