@@ -31,7 +31,6 @@ const SortingTable = () => {
     getTableProps,
     getTableBodyProps,
     headerGroups,
-    rows,
     page,
     nextPage,
     previousPage,
@@ -39,15 +38,29 @@ const SortingTable = () => {
     canNextPage,
     pageOptions,
     prepareRow,
+    setPageSize,
     state,
     setGlobalFilter,
   } = tableInstance;
 
-  const { globalFilter, pageIndex } = state;
+  const { globalFilter, pageIndex, pageSize } = state;
 
   return (
     <div>
-      <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+      <div className="flex justify-between items-center">
+        <GlobalFilter filter={globalFilter} setFilter={setGlobalFilter} />
+        <select
+          className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-500 block  p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500"
+          value={pageSize}
+          onChange={(e) => setPageSize(Number(e.target.value))}
+        >
+          {[10, 25, 50].map((pageSize) => (
+            <option key={pageSize} value={pageSize}>
+              Show {pageSize}
+            </option>
+          ))}
+        </select>
+      </div>
       <table
         className="border-collapse shadow-lg border-2 border-slate-300"
         {...getTableProps()}
