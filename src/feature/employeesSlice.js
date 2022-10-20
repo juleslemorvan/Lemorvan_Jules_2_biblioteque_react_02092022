@@ -13,7 +13,7 @@ export const employeesSlice = createSlice({
     addEmployee(state = initialState, action) {
       state.allEmployees = [...state.allEmployees, action.payload];
 
-      // localStorage.setItem("Employees", JSON.stringify(state.allEmployees));
+      localStorage.setItem("Employees", JSON.stringify(state.allEmployees));
     },
   },
 });
